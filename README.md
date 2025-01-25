@@ -1,3 +1,7 @@
+## Overview
+
+Simple CRUD app written in Java with the help of co-pilot.
+
 ## How To Run The Application
 
 1. Clone the Repo
