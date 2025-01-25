@@ -14,17 +14,28 @@ public class Inventory {
   }
 
   public void delete(int id) {
-    if (database.size() - 1 < id) {
-      System.out.println(id + " does not exist.");
+    Product productToDelete = null;
+
+    //Iterates through the database to find the product with the given id
+    for (Product product : database) {
+        if (product.getID() == id) {
+            productToDelete = product;
+            break;
+        }
     }
+    
+    if (productToDelete == null) {
+        System.out.println(id + " does not exist.");
+        return;
+    }
+    
     try {
-      database.get(id);
-      database.remove(id - 1);
-      System.out.println(id + "successfully deleted.");
-    } catch (IndexOutOfBoundsException e) {
-      System.out.println(id + " does not exist.");
+        database.remove(productToDelete);
+        System.out.println(id + " successfully deleted.");
+    } catch (Exception e) {
+        System.out.println("An error occurred while trying to delete " + id + ": " + e.getMessage());
     }
-  }
+}
 
   public void view() {
     for (Product product : database) {
