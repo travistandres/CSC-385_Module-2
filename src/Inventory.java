@@ -35,7 +35,29 @@ public class Inventory {
     } catch (Exception e) {
         System.out.println("An error occurred while trying to delete " + id + ": " + e.getMessage());
     }
-}
+  }
+
+  public void update(int id, String newProductName) {
+    Product productToUpdate = null;
+    for (Product product : database) {
+        if (product.getID() == id) {
+            productToUpdate = product;
+            break;
+        }
+    }
+    
+    if (productToUpdate == null) {
+        System.out.println(id + " does not exist.");
+        return;
+    }
+    
+    try {
+        productToUpdate.setName(newProductName);
+        System.out.println(id + " successfully updated.");
+    } catch (Exception e) {
+        System.out.println("An error occurred while trying to update " + id + ": " + e.getMessage());
+    }
+  }
 
   public void view() {
     for (Product product : database) {

@@ -40,9 +40,17 @@ public class App {
                 inventory.delete(productId);
                 break;
             case 3:
-                inventory.view();
+                System.out.print("Enter product ID to update: ");
+                int updateId = scn.nextInt();
+                scn.nextLine(); // consume the newline character
+                System.out.print("Enter new product name: ");
+                String newProductName = scn.nextLine();
+                inventory.update(updateId, newProductName);
                 break;
             case 4:
+                inventory.view();
+                break;
+            case 5:
                 System.exit(0);
                 break;
             default:
@@ -57,7 +65,7 @@ public class App {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
         nav(); // call nav() again to show the menu after an action is performed
     }
 }
